@@ -20,12 +20,7 @@ public class ConverteDatas {
     }
 
     public String formataDataBrasileira(LocalDate dataFormatoISO) {
-        try {
-            DateTimeFormatter formatoBrasileiro = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT);
-            return dataFormatoISO.format(formatoBrasileiro);
-        } catch (DateTimeException e) {
-            throw new DataInvalida(e.getMessage());
-        }
-
+        DateTimeFormatter formatoBrasileiro = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT);
+        return dataFormatoISO.format(formatoBrasileiro);
     }
 }
