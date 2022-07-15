@@ -1,0 +1,506 @@
+{
+	"info": {
+		"_postman_id": "86b51998-2895-4a74-9642-65beebc3299e",
+		"name": "Sprint_04_Pedro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Criar Partido",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "pt-BR",
+						"description": "Receber em Português",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Requisições em Json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Pais do futuro\",\r\n    \"sigla\": \"PF\",\r\n    \"ideologia\": \"ceNTro\",\r\n    \"dataFundacao\": \"29/05/1998\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/partidos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"partidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista todos os partidos sem filtros",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "pt-BR",
+						"description": "Receber em Português",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Requisições em Json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/partidos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"partidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista partidos com filtro",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "pt-BR",
+						"description": "Receber em Português",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Requisições em Json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/partidos?ideologia=centro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"partidos"
+					],
+					"query": [
+						{
+							"key": "ideologia",
+							"value": "centro"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Partido pelo Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "pt-BR",
+						"description": "Receber em Português",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Requisições em Json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/partidos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"partidos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista Associados do partido",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "pt-BR",
+						"description": "Receber em Português",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Requisições em Json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/partidos/1/associados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"partidos",
+						"1",
+						"associados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deleta partido pelo Id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "pt-BR",
+						"description": "Receber em Português",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Requisições em Json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/partidos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"partidos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualiza partido pelo Id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "pt-BR",
+						"description": "Receber em Português",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Requisições em Json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Partido Honesto\",\r\n    \"sigla\": \"PH\",\r\n    \"ideologia\": \"Centro\",\r\n    \"dataFundacao\": \"27/10/2000\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/partidos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"partidos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cria Associado",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "pt-BR",
+						"description": "Receber em Português",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Requisições em Json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\":\"Et Bilu\",\r\n    \"cargoPolitico\":\"pResidente\",\r\n    \"dataNascimento\":\"27/10/2000\",\r\n    \"sexo\":\"feminiNo\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/associados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"associados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vincula a um partido",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "pt-BR",
+						"description": "Receber em Português",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Requisições em Json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idAssociado\": 1,\r\n    \"idPartido\": 1\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/associados/partidos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"associados",
+						"partidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostra os Associados",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "pt-BR",
+						"description": "Receber em Português",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Requisições em Json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/associados?ordernarPor=nome",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"associados"
+					],
+					"query": [
+						{
+							"key": "cargoPolitico",
+							"value": "Presidente",
+							"disabled": true
+						},
+						{
+							"key": "ordernarPor",
+							"value": "nome"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostra o Associado",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "pt-BR",
+						"description": "Receber em Português",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Requisições em Json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/associados/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"associados",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualiza associado pelo Id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "pt-BR",
+						"description": "Receber em Português",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Requisições em Json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Jetosvaldo\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/associados/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"associados",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deleta Associado",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "pt-BR",
+						"description": "Receber em Português",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Requisições em Json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/associados/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"associados",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Desvincula o Associado",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "pt-BR",
+						"description": "Receber em Português",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Requisições em Json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/associados/1/partidos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"associados",
+						"1",
+						"partidos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
