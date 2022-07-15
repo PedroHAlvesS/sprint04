@@ -22,34 +22,33 @@ public class ConverteDatasTests {
     @DisplayName("Deve retornar data no formato ISO 8601 (ano-mes-dia)")
     void dataDeveRetornarNoFormatoIso8601() {
 
-        String dataFormatoBrasileiro = "27/10/2000";
+        String dataInserida = "27/10/2000";
         LocalDate dataEsperada = LocalDate.of(2000, 10, 27);
 
-        LocalDate dataFormatadaPelaService = this.converteDatas.formataDataISO8601(dataFormatoBrasileiro);
+        LocalDate dataDoMetodo = this.converteDatas.formataDataISO8601(dataInserida);
 
-        Assertions.assertEquals(dataFormatadaPelaService, dataEsperada);
+        Assertions.assertEquals(dataDoMetodo, dataEsperada);
     }
 
     @Test
-    @DisplayName("Nao deveria poder inserir uma data invalida")
-    void naoDeveriaInserirDataInvalida() {
+    @DisplayName("Nao deveria poder inserir uma string data invalida")
+    void naoDeveriaInserirDataStringInvalida() {
 
-        String dataFormatoBrasileiro = "30/02/2000";
+        String dataInvalida = "30/02/2000";
 
-        Assertions.assertThrows(DataInvalida.class, () -> this.converteDatas.formataDataISO8601(dataFormatoBrasileiro));
+        Assertions.assertThrows(DataInvalida.class, () -> this.converteDatas.formataDataISO8601(dataInvalida));
 
     }
-
 
     @Test
     @DisplayName("Deve retornar data no formato Brasileiro (dia/mes/ano)")
     void dataDeveRetornarNoFormatoBrasileiro() {
 
-        LocalDate dataEsperada = LocalDate.of(2000, 10, 27);
-        String dataFormatoBrasileiro = "27/10/2000";
+        LocalDate dataInserida = LocalDate.of(2000, 10, 27);
+        String dataEsperada = "27/10/2000";
 
-        String formataDataBrasileira = this.converteDatas.formataDataBrasileira(dataEsperada);
+        String dataDoMetodo = this.converteDatas.formataDataBrasileira(dataInserida);
 
-        Assertions.assertEquals(dataFormatoBrasileiro, formataDataBrasileira);
+        Assertions.assertEquals(dataEsperada, dataDoMetodo);
     }
 }

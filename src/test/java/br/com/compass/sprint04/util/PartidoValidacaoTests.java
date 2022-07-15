@@ -1,6 +1,5 @@
 package br.com.compass.sprint04.util;
 
-import br.com.compass.sprint04.dto.request.PartidoRequestDTO;
 import br.com.compass.sprint04.exceptions.IdeologiaNaoEncontrada;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

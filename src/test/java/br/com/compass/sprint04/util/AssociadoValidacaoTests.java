@@ -1,7 +1,6 @@
 package br.com.compass.sprint04.util;
 
 import br.com.compass.sprint04.exceptions.CargoPoliticoNaoEncontrado;
-import br.com.compass.sprint04.exceptions.IdeologiaNaoEncontrada;
 import br.com.compass.sprint04.exceptions.SexoNaoEncontrado;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

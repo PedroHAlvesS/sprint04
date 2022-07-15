@@ -3,6 +3,7 @@ package br.com.compass.sprint04.util;
 import br.com.compass.sprint04.exceptions.DataInvalida;
 import org.springframework.stereotype.Component;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.ResolverStyle;
@@ -22,7 +23,7 @@ public class ConverteDatas {
         try {
             DateTimeFormatter formatoBrasileiro = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT);
             return dataFormatoISO.format(formatoBrasileiro);
-        } catch (Exception e) {
+        } catch (DateTimeException e) {
             throw new DataInvalida(e.getMessage());
         }
 
