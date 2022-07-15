@@ -1,5 +1,6 @@
 package br.com.compass.sprint04.util;
 
+import br.com.compass.sprint04.exceptions.DataInvalida;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -20,7 +21,6 @@ public class ConverteDatasTests {
     @Test
     @DisplayName("Deve retornar data no formato ISO 8601 (ano-mes-dia)")
     void dataDeveRetornarNoFormatoIso8601() {
-        inicializar();
 
         String dataFormatoBrasileiro = "27/10/2000";
         LocalDate dataEsperada = LocalDate.of(2000, 10, 27);
@@ -31,9 +31,19 @@ public class ConverteDatasTests {
     }
 
     @Test
+    @DisplayName("Nao deveria poder inserir uma data invalida")
+    void naoDeveriaInserirDataInvalida() {
+
+        String dataFormatoBrasileiro = "30/02/2000";
+
+        Assertions.assertThrows(DataInvalida.class, () -> this.converteDatas.formataDataISO8601(dataFormatoBrasileiro));
+
+    }
+
+
+    @Test
     @DisplayName("Deve retornar data no formato Brasileiro (dia/mes/ano)")
     void dataDeveRetornarNoFormatoBrasileiro() {
-        inicializar();
 
         LocalDate dataEsperada = LocalDate.of(2000, 10, 27);
         String dataFormatoBrasileiro = "27/10/2000";
