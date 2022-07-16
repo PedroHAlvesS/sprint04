@@ -11,7 +11,7 @@ public class PartidoValidacao {
             String ideologiaValidada = Ideologia.valueOf(ideologiaRecebida.toUpperCase()).retornaNomeDaIdeologia();
             return ideologiaValidada;
         } catch (IllegalArgumentException e) {
-            throw new IdeologiaInvalida("Ideologia não encontrada");
+            throw new IdeologiaInvalida();
         }
     }
 

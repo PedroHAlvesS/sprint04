@@ -87,7 +87,7 @@ public class ExceptionsHandlers {
     public ResponseEntity<ExceptionResponseDTO> handleUniqueError(PersistenceException exception) {
         String message = exception.getMessage();
         ExceptionResponseDTO responseDTO = new ExceptionResponseDTO(message, "valor duplicado em: Sigla ou Nome do partido");
-        return ResponseEntity.badRequest().body(responseDTO);
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(responseDTO);
     }
 
 

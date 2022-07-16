@@ -15,7 +15,7 @@ public class ConverteDatas {
             DateTimeFormatter formatoBrasileiro = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT);
             return LocalDate.parse(data, formatoBrasileiro);
         } catch (Exception e) {
-            throw new DataInvalida(e.getMessage());
+            throw new DataInvalida();
         }
     }
 

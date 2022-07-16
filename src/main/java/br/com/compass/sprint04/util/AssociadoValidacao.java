@@ -14,7 +14,7 @@ public class AssociadoValidacao {
             String cargoPoliticoValidado = CargoPolitico.valueOf(cargoPolitico.toUpperCase()).retornaNomeDoCargo();
             return cargoPoliticoValidado;
         } catch (IllegalArgumentException e) {
-            throw new CargoPoliticoInvalido("Cargo nao foi encontrado");
+            throw new CargoPoliticoInvalido();
         }
     }
 
@@ -23,7 +23,7 @@ public class AssociadoValidacao {
             String sexoValidado = Sexo.valueOf(sexo.toUpperCase()).retornaSexo();
             return sexoValidado;
         } catch (IllegalArgumentException e) {
-            throw new SexoInvalido("Sexo nao encontrado");
+            throw new SexoInvalido();
         }
     }
 }
