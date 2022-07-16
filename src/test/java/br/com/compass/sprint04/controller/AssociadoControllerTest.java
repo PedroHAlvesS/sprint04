@@ -1,6 +1,7 @@
 package br.com.compass.sprint04.controller;
 
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -22,9 +23,11 @@ public class AssociadoControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    void deveriaalgo() throws Exception {
+    @DisplayName("Deveria criar um associado")
+    void deveriaCriarUmAssociado() throws Exception {
         URI uri = new URI("/associados");
-        String json = "{\"nome\":\"abc\",\"cargoPolitico\":\"nenhum\",\"dataNascimento\":\"27/10/1984\",\"sexo\":\"Masculino\"}";
+        String json = stringJson("Zaphod Beeblebrox", "Presidente", "25/10/1982", "masculino");
+
 
         mockMvc.perform(MockMvcRequestBuilders
                         .post(uri)
@@ -34,15 +37,48 @@ public class AssociadoControllerTest {
     }
 
     @Test
-    void deveriaalgo3() throws Exception {
+    @DisplayName("Nao deveria criar um associado com cargo politico invalido")
+    void naoDeveriaCriarUmAssociadoComCargoPoliticoInvalido() throws Exception {
         URI uri = new URI("/associados");
-        String json = "{\"nome\":\"abc\",\"cargoPolitico\":\"abc\",\"dataNascimento\":\"27/10/1984\",\"sexo\":\"Masculino\"}";
+        String json = stringJson("Zaphod Beeblebrox", "teste", "25/10/1982", "masculino");
 
         mockMvc.perform(MockMvcRequestBuilders
                         .post(uri)
                         .content(json)
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().is(500));
+                .andExpect(MockMvcResultMatchers.status().is(400));
+    }
+
+    @Test
+    @DisplayName("Nao deveria criar um associado com data invalida")
+    void naoDeveriaCriarUmAssociadoComDataInvalida() throws Exception {
+        URI uri = new URI("/associados");
+        String json = stringJson("Zaphod Beeblebrox", "Presidente", "42/10/1982", "masculino");
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .post(uri)
+                        .content(json)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().is(400));
+    }
+
+    @Test
+    @DisplayName("Nao deveria criar um associado com sexo invalido")
+    void naoDeveriaCriarUmAssociadoComSexoInvalido() throws Exception {
+        URI uri = new URI("/associados");
+        String json = stringJson("Zaphod Beeblebrox", "Presidente", "24/10/1982", "teste");
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .post(uri)
+                        .content(json)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().is(400));
+    }
+
+    private String stringJson(String nome, String cargoPolitico, String dataNascimento, String sexo) {
+        String json = "{" + "\"nome\":" + "\"" + nome + "\"" + "," +"\"cargoPolitico\":" + "\"" + cargoPolitico + "\"" + ","
+                + "\"dataNascimento\":" + "\"" + dataNascimento + "\"" + ","+ "\"sexo\":" + "\"" + sexo + "\"" + "}";
+        return json;
     }
 
 }

@@ -10,4 +10,10 @@ import lombok.NoArgsConstructor;
 public class ExceptionResponseDTO {
     private String message;
     private String type;
+
+
+    @Override
+    public String toString() {
+        return "{\"message\":" + "\"" + message + "\"," + "\"type\":" + "\"" + type + "\"}";
+    }
 }
