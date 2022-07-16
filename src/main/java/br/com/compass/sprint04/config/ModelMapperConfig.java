@@ -1,7 +1,9 @@
 package br.com.compass.sprint04.config;
 
 import br.com.compass.sprint04.util.ConverteDatas;
-import org.modelmapper.*;
+import org.modelmapper.AbstractConverter;
+import org.modelmapper.Converter;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

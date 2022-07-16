@@ -42,8 +42,7 @@ public class PartidoService {
         PartidoEntity partidoEntity = modelMapper.map(request, PartidoEntity.class);
         partidoRepository.save(partidoEntity);
 
-        PartidoResponseDTO partidoResponseDTO = modelMapper.map(partidoEntity, PartidoResponseDTO.class);
-        return partidoResponseDTO;
+        return modelMapper.map(partidoEntity, PartidoResponseDTO.class);
     }
 
     public List<PartidoResponseDTO> lista(String tipoDeIdeologia) {
@@ -53,11 +52,10 @@ public class PartidoService {
         } else {
             partidoEntities = partidoRepository.findByIdeologia(tipoDeIdeologia);
         }
-        List<PartidoResponseDTO> partidos = partidoEntities.stream().map(
+
+        return partidoEntities.stream().map(
                         partidoEntity -> modelMapper.map(partidoEntity, PartidoResponseDTO.class))
                 .collect(Collectors.toList());
-
-        return partidos;
 
     }
 

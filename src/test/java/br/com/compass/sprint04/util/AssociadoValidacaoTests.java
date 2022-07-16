@@ -1,7 +1,7 @@
 package br.com.compass.sprint04.util;
 
-import br.com.compass.sprint04.exceptions.CargoPoliticoNaoEncontrado;
-import br.com.compass.sprint04.exceptions.SexoNaoEncontrado;
+import br.com.compass.sprint04.exceptions.CargoPoliticoInvalido;
+import br.com.compass.sprint04.exceptions.SexoInvalido;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -26,7 +26,7 @@ public class AssociadoValidacaoTests {
     @Test
     @DisplayName("Cargo Politico nao deve aceitar valores diferentes do enum")
     void cargoPoliticoNaoDeveAceitarValoresDiferenteDoEnum() {
-        Assertions.assertThrows(CargoPoliticoNaoEncontrado.class,
+        Assertions.assertThrows(CargoPoliticoInvalido.class,
                 () -> this.associadoValidacao.validaCargoPolitico("Flip"));
     }
 
@@ -41,7 +41,7 @@ public class AssociadoValidacaoTests {
     @Test
     @DisplayName("Sexo nao deve aceitar valores diferentes do enum")
     void SexoNaoDeveAceitarValoresDiferenteDoEnum() {
-        Assertions.assertThrows(SexoNaoEncontrado.class,
+        Assertions.assertThrows(SexoInvalido.class,
                 () -> this.associadoValidacao.validaSexo("Flip"));
     }
 

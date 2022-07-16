@@ -1,6 +1,6 @@
 package br.com.compass.sprint04.util;
 
-import br.com.compass.sprint04.exceptions.IdeologiaNaoEncontrada;
+import br.com.compass.sprint04.exceptions.IdeologiaInvalida;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -24,7 +24,7 @@ public class PartidoValidacaoTests {
     @Test
     @DisplayName("Ideologia nao deve aceitar valores diferentes do enum")
     void ideologiaNaoDeveAceitarValoresDiferenteDoEnum() {
-        Assertions.assertThrows(IdeologiaNaoEncontrada.class,
+        Assertions.assertThrows(IdeologiaInvalida.class,
                 () -> this.partidoValidacao.validaIdeologia("Flip"));
     }
 

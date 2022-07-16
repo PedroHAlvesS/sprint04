@@ -1,11 +1,13 @@
 package br.com.compass.sprint04.controller;
 
+import br.com.compass.sprint04.dto.request.AssociadoAtualizaRequestDTO;
 import br.com.compass.sprint04.dto.request.AssociadoRequestDTO;
 import br.com.compass.sprint04.dto.request.AssociadoVinculacaoRequestDTO;
 import br.com.compass.sprint04.dto.response.AssociadoResponseDTO;
 import br.com.compass.sprint04.service.AssociadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -20,8 +22,9 @@ public class AssociadoController {
     private AssociadoService associadoService;
 
     @PostMapping
-    public ResponseEntity<AssociadoResponseDTO> criaAssociado(@RequestBody @Valid AssociadoRequestDTO associadoRequest, UriComponentsBuilder uriBuilder) {
-        AssociadoResponseDTO responseDTO = associadoService.salva(associadoRequest);
+    @Transactional
+    public ResponseEntity<AssociadoResponseDTO> criaAssociado(@RequestBody @Valid AssociadoRequestDTO requestDTO, UriComponentsBuilder uriBuilder) {
+        AssociadoResponseDTO responseDTO = associadoService.salva(requestDTO);
 
         URI uri = uriBuilder.path("/associados/{id}").buildAndExpand(responseDTO.getId()).toUri();
 
@@ -29,6 +32,7 @@ public class AssociadoController {
     }
 
     @PostMapping("/partidos")
+    @Transactional
     public ResponseEntity<Void> vinculaAoPartido(@RequestBody @Valid AssociadoVinculacaoRequestDTO requestDTO) {
         associadoService.vinculaAssociadoAoPartido(requestDTO);
         return ResponseEntity.noContent().build();
@@ -48,7 +52,8 @@ public class AssociadoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<AssociadoResponseDTO> atualizaAssociado(@PathVariable Long id, @RequestBody AssociadoRequestDTO requestDTO) {
+    @Transactional
+    public ResponseEntity<AssociadoResponseDTO> atualizaAssociado(@PathVariable Long id, @RequestBody AssociadoAtualizaRequestDTO requestDTO) {
         AssociadoResponseDTO responseDTO = associadoService.atualizaAssociado(id, requestDTO);
         return ResponseEntity.ok(responseDTO);
     }

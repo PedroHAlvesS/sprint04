@@ -1,5 +1,6 @@
 package br.com.compass.sprint04.service;
 
+import br.com.compass.sprint04.dto.request.AssociadoAtualizaRequestDTO;
 import br.com.compass.sprint04.dto.request.AssociadoRequestDTO;
 import br.com.compass.sprint04.dto.request.AssociadoVinculacaoRequestDTO;
 import br.com.compass.sprint04.dto.response.AssociadoResponseDTO;
@@ -72,7 +73,7 @@ public class AssociadoService {
         return modelMapper.map(associadoEntity, AssociadoResponseDTO.class);
     }
 
-    public AssociadoResponseDTO atualizaAssociado(Long id, AssociadoRequestDTO requestDTO) {
+    public AssociadoResponseDTO atualizaAssociado(Long id, AssociadoAtualizaRequestDTO requestDTO) {
         AssociadoEntity associadoEntity = associadoRepository.findById(id).orElseThrow(AssociadoNaoEncontrado::new);
 
         if (requestDTO.getNome() != null) {
