@@ -7,6 +7,7 @@ import br.com.compass.sprint04.entity.PartidoEntity;
 import br.com.compass.sprint04.repository.AssociadoRepository;
 import br.com.compass.sprint04.repository.PartidoRepository;
 import br.com.compass.sprint04.util.AssociadoValidacao;
+import br.com.compass.sprint04.util.ConverteDatas;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -28,15 +29,14 @@ public class AssosciadoServiceTests {
 
     @Mock
     private AssociadoRepository associadoRepository;
-
     @Mock
     private PartidoRepository partidoRepository;
-
     @Mock
     private ModelMapper modelMapper;
-
     @Mock
     private AssociadoValidacao validacao;
+    @Mock
+    private ConverteDatas converteDatas;
 
     private AssociadoEntity associadoEntity;
     private PartidoEntity partidoEntity;
@@ -75,15 +75,36 @@ public class AssosciadoServiceTests {
     void deveriaPermitirAtualizaApenasUmCampoDoAssociado() {
         // Mockito Config
         Mockito.when(associadoRepository.save(associadoEntity)).thenReturn(this.associadoEntity);
+        LocalDate dataEsperada = LocalDate.of(2000, 5, 27);
+        Mockito.when(converteDatas.formataDataISO8601("27/5/2000")).thenReturn(dataEsperada);
+        Mockito.when(validacao.validaSexo("Feminino")).thenReturn("Feminino");
+        Mockito.when(validacao.validaCargoPolitico("Prefeito")).thenReturn("Prefeito");
 
         associadoEntity.setId(1l);
+        associadoEntity.setSexo("Masculino");
+        associadoEntity.setNome("Zaphod");
+        associadoEntity.setCargoPolitico("Presidente");
+        LocalDate dataEntidade = LocalDate.of(2000, 10, 12);
+        associadoEntity.setDataNascimento(dataEntidade);
 
         AssociadoAtualizaRequestDTO requestDTO = new AssociadoAtualizaRequestDTO();
 
+        // testes individuais
         requestDTO.setNome("Jose");
         associadoService.atualizaAssociado(associadoEntity.getId(), requestDTO);
         Assertions.assertEquals(associadoEntity.getNome(), requestDTO.getNome());
 
+        requestDTO.setCargoPolitico("Prefeito");
+        associadoService.atualizaAssociado(1l, requestDTO);
+        Assertions.assertEquals(requestDTO.getCargoPolitico(), associadoEntity.getCargoPolitico());
+
+        requestDTO.setSexo("Feminino");
+        associadoService.atualizaAssociado(1l, requestDTO);
+        Assertions.assertEquals(requestDTO.getSexo(), associadoEntity.getSexo());
+
+        requestDTO.setDataNascimento("27/5/2000");
+        associadoService.atualizaAssociado(1l, requestDTO);
+        Assertions.assertEquals(associadoEntity.getDataNascimento(), dataEsperada);
     }
 
     @Test
