@@ -25,7 +25,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome\": \"Pais do futuro\",\r\n    \"sigla\": \"PF\",\r\n    \"ideologia\": \"ceNTro\",\r\n    \"dataFundacao\": \"29/05/1998\"\r\n}"
+					"raw": "{\r\n    \"nome\": \"Pais do futuro\",\r\n    \"sigla\": \"PF\",\r\n    \"ideologia\": \"CeNTro\",\r\n    \"dataFundacao\": \"29/05/1998\"\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/partidos",
@@ -268,7 +268,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome\":\"Et Bilu\",\r\n    \"cargoPolitico\":\"pResidente\",\r\n    \"dataNascimento\":\"27/10/2000\",\r\n    \"sexo\":\"feminiNo\"\r\n}"
+					"raw": "{\r\n    \"nome\":\"Zaphod Beeblebrox\",\r\n    \"cargoPolitico\":\"pResidente\",\r\n    \"dataNascimento\":\"27/10/2000\",\r\n    \"sexo\":\"MascuLiNo\"\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/associados",
@@ -322,7 +322,7 @@
 			"response": []
 		},
 		{
-			"name": "Mostra os Associados",
+			"name": "Mostra os Associados e com filtro",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -340,7 +340,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/associados?ordernarPor=nome",
+					"raw": "http://localhost:8080/associados",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -357,7 +357,8 @@
 						},
 						{
 							"key": "ordernarPor",
-							"value": "nome"
+							"value": "nome",
+							"disabled": true
 						}
 					]
 				}
@@ -366,22 +367,29 @@
 		},
 		{
 			"name": "Mostra o Associado",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [
-					{
-						"key": "Accept-Language",
-						"value": "pt-BR",
-						"description": "Receber em Português",
-						"type": "default"
-					},
 					{
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": "Requisições em Json",
 						"type": "default"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "pt-BR",
+						"description": "Receber em Português",
+						"type": "default"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://localhost:8080/associados/1",
 					"protocol": "http",
