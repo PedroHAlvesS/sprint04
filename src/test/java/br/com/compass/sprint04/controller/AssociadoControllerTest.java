@@ -58,11 +58,15 @@ public class AssociadoControllerTest {
         URI uri = new URI("/associados");
         String json = stringJson("Zaphod Beeblebrox", "Presidente", "42/10/1982", "masculino");
 
-        mockMvc.perform(MockMvcRequestBuilders
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
                         .post(uri)
                         .content(json)
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().is(400));
+                .andExpect(MockMvcResultMatchers.status().is(400)).andReturn();
+
+        String msgEsperada = "{\"message\":\"Data invalida\",\"type\":\"Data\"}";
+
+        Assertions.assertEquals(msgEsperada, mvcResult.getResponse().getContentAsString());
     }
 
     @Test
@@ -71,11 +75,15 @@ public class AssociadoControllerTest {
         URI uri = new URI("/associados");
         String json = stringJson("Zaphod Beeblebrox", "Presidente", "24/10/1982", "teste");
 
-        mockMvc.perform(MockMvcRequestBuilders
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
                         .post(uri)
                         .content(json)
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().is(400));
+                .andExpect(MockMvcResultMatchers.status().is(400)).andReturn();
+
+        String msgEsperada = "{\"message\":\"Sexo apenas Masculino ou Feminino\",\"type\":\"Sexo\"}";
+
+        Assertions.assertEquals(msgEsperada, mvcResult.getResponse().getContentAsString());
     }
 
     @Test
