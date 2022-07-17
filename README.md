@@ -1,2 +1,4 @@
 # sprint04
- Sprint 04 da Compass
+ Api de cadastro de partidos e associados
+ 
+ 
