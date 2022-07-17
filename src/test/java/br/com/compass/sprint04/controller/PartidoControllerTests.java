@@ -27,7 +27,7 @@ public class PartidoControllerTests {
     @DisplayName("Deveria criar um partido")
     void deveriaCriarUmPartido() throws Exception {
         URI uri = new URI("/partidos");
-        String json = stringJson("teste", "teste", "CenTro", "27/10/2000");
+        String json = stringJson("Pais do Futuro", "Pf", "CenTro", "27/10/2000");
 
         mockMvc.perform(MockMvcRequestBuilders
                         .post(uri)

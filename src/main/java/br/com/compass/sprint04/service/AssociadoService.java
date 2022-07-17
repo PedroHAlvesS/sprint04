@@ -18,7 +18,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -109,5 +108,3 @@ public class AssociadoService {
         return modelMapper.map(associadoEntity, AssociadoResponseDTO.class);
     }
 }
-
-
