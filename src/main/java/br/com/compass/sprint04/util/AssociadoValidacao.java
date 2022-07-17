@@ -2,8 +2,8 @@ package br.com.compass.sprint04.util;
 
 import br.com.compass.sprint04.enums.CargoPolitico;
 import br.com.compass.sprint04.enums.Sexo;
-import br.com.compass.sprint04.exceptions.CargoPoliticoNaoEncontrado;
-import br.com.compass.sprint04.exceptions.SexoNaoEncontrado;
+import br.com.compass.sprint04.exceptions.CargoPoliticoInvalido;
+import br.com.compass.sprint04.exceptions.SexoInvalido;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,7 +14,7 @@ public class AssociadoValidacao {
             String cargoPoliticoValidado = CargoPolitico.valueOf(cargoPolitico.toUpperCase()).retornaNomeDoCargo();
             return cargoPoliticoValidado;
         } catch (IllegalArgumentException e) {
-            throw new CargoPoliticoNaoEncontrado("Cargo nao foi encontrado");
+            throw new CargoPoliticoInvalido();
         }
     }
 
@@ -23,7 +23,7 @@ public class AssociadoValidacao {
             String sexoValidado = Sexo.valueOf(sexo.toUpperCase()).retornaSexo();
             return sexoValidado;
         } catch (IllegalArgumentException e) {
-            throw new SexoNaoEncontrado("Sexo nao encontrado");
+            throw new SexoInvalido();
         }
     }
 }

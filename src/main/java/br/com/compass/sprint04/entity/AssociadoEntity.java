@@ -1,6 +1,5 @@
 package br.com.compass.sprint04.entity;
 
-import br.com.compass.sprint04.enums.CargoPolitico;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,6 +7,7 @@ import java.time.LocalDate;
 
 @Entity
 @Data
+@Table(name = "Associados")
 public class AssociadoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
