@@ -3,7 +3,6 @@ package br.com.compass.sprint04.util;
 import br.com.compass.sprint04.exceptions.DataInvalida;
 import org.springframework.stereotype.Component;
 
-import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.ResolverStyle;

@@ -65,7 +65,8 @@ public class PartidoService {
     }
 
     public void deleta(Long id) {
-        partidoRepository.deleteById(id);
+        PartidoEntity partidoEntity = partidoRepository.findById(id).orElseThrow(PartidoNaoEncontrado::new);
+        partidoRepository.delete(partidoEntity);
     }
 
     public PartidoResponseDTO atualiza(Long id, PartidoAtualizaRequestDTO partidoAtualiza) {
